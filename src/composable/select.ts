@@ -491,7 +491,7 @@ export function useSelect<R = any>(
         return;
       }
 
-      opts.value = opts.value.filter(
+      opts.value = rawOpts.value.filter(
         (e) => {
           if (
             typeof e === 'string'
