@@ -18,7 +18,7 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: [
-      'app.scss'
+      'app.scss', 'tailwind.css'
     ],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
@@ -112,7 +112,12 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+        'Notify',
+        'Dialog',
+        'Loading',
+        'Dark',
+      ]
     },
 
     // animations: 'all', // --- includes all animations

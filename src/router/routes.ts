@@ -2,9 +2,27 @@ import type { RouteRecordRaw } from 'vue-router';
 
 const routes: RouteRecordRaw[] = [
   {
+    path: '/auth',
+    component: () => import('layouts/LoginLayout.vue'),
+    children: [
+      {
+        path: 'login',
+        component: () => import('pages/login/FormPage.vue'),
+        meta: { title: `PPA Inspection Form Scanner | Login` }
+      }
+    ]
+  },
+
+  {
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
-    children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
+    children: [
+      {
+        path: '/',
+        component: () => import('pages/IndexPage.vue'),
+        meta: { title: `PPA Inspection Form Scanner` }
+      }
+    ],
   },
 
   // Always leave this as last one,

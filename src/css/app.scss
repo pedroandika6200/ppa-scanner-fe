@@ -1,1 +1,72 @@
-// app global css
+// app global css in SCSS form
+
+.disable-arrow .q-btn-dropdown__arrow {
+  display: none !important;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar .q-scrollarea__thumb,
+.no-scrollbar .q-scrollarea__bar {
+  opacity: 0 !important;
+  display: none !important;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.q-table th.sortable.text-center {
+  padding-left: 32px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.sticky-table-header .q-table thead tr,
+.sticky-table-header .q-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.no-padding-and-margin-bottom-table .q-table__bottom {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.dense-bottom .q-table__bottom {
+  min-height: unset !important;
+}
+
+.denser-input-field .q-field__control,
+.denser-input-field .q-field__inner,
+.denser-input-field .q-field__marginal,
+.denser-input-field .q-field__control input {
+    height: 30px !important;
+    min-height: 30px !important;
+}
+
+.denser-input-field .q-field__control,
+.denser-input-field .q-field__native {
+    padding: 0 4px;
+}
+
+.denser-input-field .q-field__inner {
+    min-height: 30px;
+}
+
+.denser-input-field .q-field__native {
+    min-height: 30px !important;
+}// app global css

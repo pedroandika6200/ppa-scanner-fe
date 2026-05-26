@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-secondary">
       <q-toolbar>
         <q-btn
           flat
@@ -11,17 +11,16 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="font-medium text-uppercase">
+          PPA Inspection Form Scanner
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <profile-dialog />
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
       bordered
     >
       <q-list>
@@ -48,6 +47,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import EssentialLink, { type EssentialLinkProps } from 'components/EssentialLink.vue';
+import ProfileDialog from 'src/components/ProfileDialog.vue';
 
 const linksList: EssentialLinkProps[] = [
   {
