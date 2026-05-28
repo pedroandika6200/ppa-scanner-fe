@@ -69,4 +69,31 @@ input[type=number] {
 
 .denser-input-field .q-field__native {
     min-height: 30px !important;
-}// app global css
+}
+
+.wrap-select-input .q-field__control {
+  flex-wrap: wrap !important;
+}
+
+.normal-readonly.q-field--readonly .q-field__control:before {
+  border-style: solid !important;
+}
+
+.normal-readonly.q-field--readonly .q-field__control {
+  opacity: 1 !important;
+}
+
+.normal-readonly.q-field--readonly .q-field__native {
+  cursor: default;
+}
+
+.no-pointer .q-field__native,
+.no-pointer .q-field__input {
+  pointer-events: none !important;
+}
+
+.bolder-prefix .q-field__prefix {
+  font-weight: bolder !important;
+}
+
+// app global css

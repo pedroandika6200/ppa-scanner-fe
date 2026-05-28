@@ -139,7 +139,7 @@
   <div class="column">
     <div class="row items-end justify-between">
       <q-item-label class="font-medium text-italic text-uppercase q-pl-xs">
-        Items {{ props.data.form.items.length ? `- ${props.data.form.items.length} Item${props.data.form.items.length > 1 ? 's' : ''} scanned` : '' }}
+        Items {{ props.data.form.items.length ? `- ${props.data.form.items.length} Item${props.data.form.items.length > 1 ? 's' : ''} listed` : '' }}
       </q-item-label>
       <q-btn v-if="!props.data.form.items.some(i => i.is_submitted) && !props.data.on_process"
         dense
@@ -1713,3 +1713,17 @@ const handleOpenReport = (id: string | number) => {
   window.open(`${process.env.WEB_BASE_URL}/#/admin/factories/packings/${id}`, '_blank');
 }
 </script>
+
+<style>
+.q-field__bottom {
+  padding: 2px !important;
+}
+
+.sticky-item-header {
+  position: sticky;
+  top: -2px;
+  padding-top: 2px;
+  z-index: 10;
+}
+
+</style>
