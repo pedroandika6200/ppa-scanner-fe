@@ -48,7 +48,7 @@ export const useAuthStore = defineStore('auth', {
           Notify.create({
             type: 'negative',
             icon: 'warning',
-            message: error.response?.data?.error || error.response?.data?.message || error.response?.statusText || JSON.stringify(error),
+            message: error.response?.data?.error || error.response?.data?.message || error.response?.statusText || error.message || JSON.stringify(error),
             caption: 'Please login',
             position: 'top-right',
             classes: 'text-uppercase',
