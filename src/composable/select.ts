@@ -256,7 +256,6 @@
 
 import {
   ref,
-  shallowRef,
   watch,
   onUnmounted,
 } from 'vue';
@@ -284,9 +283,9 @@ export function useSelect<R = any>(
 ) {
   const select = ref<QSelect>();
 
-  const opts = shallowRef<R[]>([]);
+  const opts = ref<R[]>([]);
 
-  const rawOpts = shallowRef<R[]>([]);
+  const rawOpts = ref<R[]>([]);
 
   const loading = ref(false);
 
@@ -305,7 +304,7 @@ export function useSelect<R = any>(
     }
   });
 
-  const onFetch = (
+  const onFetch = async (
     input = '',
     page = 1,
     forceReload = false
@@ -366,7 +365,7 @@ export function useSelect<R = any>(
     ) {
       loading.value = true;
 
-      return cache.promise.then(() => {
+      return await cache.promise.then(() => {
         rawOpts.value = [...options.value];
         opts.value = [...options.value];
 
@@ -411,12 +410,12 @@ export function useSelect<R = any>(
           rawOpts.value = [
             ...rawOpts.value,
             ...newOpts,
-          ];
+          ] as typeof rawOpts.value;
 
           opts.value = [
             ...opts.value,
             ...newOpts,
-          ];
+          ] as typeof opts.value;
 
           options.value = [
             ...options.value,
@@ -459,7 +458,7 @@ export function useSelect<R = any>(
         cache.promise = null;
       });
 
-    return cache.promise;
+    return await cache.promise;
   };
 
   const refresh = async () => {
