@@ -239,6 +239,7 @@
                               label="Yes"
                               color="negative"
                               class="q-py-none flex-grow"
+                              v-close-popup
                               @click="handleRemoveItem(sItem.originalIndex)"
                             />
                           </q-card-actions>
@@ -485,7 +486,7 @@
                                   :disable="!sItem.item.item_id || !(!sItem.item.loading) || !(!sItem.item.is_submitted)"
                                   :rules="[(val: WOItemModel) => !!val || 'Work Order (SPK) is required']"
                                   @update:model-value="(e: WOItemModel) => handleSelectWOItem(sItem.originalIndex, e, okIndex)"
-                                  @update:options="(options: WOItemModel[]) => !sItem.item.ok_list?.[okIndex]?.work_order_item_id ? autoAssignWOItem(options, sItem.originalIndex) : undefined"
+                                  @update:options="(options: WOItemModel[]) => !sItem.item.ok_list?.[0]?.work_order_item_id ? autoAssignWOItem(options, sItem.originalIndex) : undefined"
                                 >
                                   <template v-slot:option="scope">
                                     <q-item
@@ -584,7 +585,7 @@
                                     type="text"
                                     mask="###,###,###,###,###,###,###,###,###,###"
                                     reverse-fill-mask
-                                    @click.prevent
+                                    @click.stop="ok.is_ng_collapsed = !ok.is_ng_collapsed"
                                   >
                                     <template v-slot:after>
                                       <q-btn
