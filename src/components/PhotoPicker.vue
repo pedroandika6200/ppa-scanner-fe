@@ -1,12 +1,12 @@
 <template>
-  <div class="column gap-1 w-full">
+  <div class="column gap-1 justify-between w-full" style="height: calc(100dvh - 80px)">
     <div>
       <video ref="videoRef" autoplay playsinline class="w-[calc(100vw-18px)] max-h-[calc(100dvh-180px)]" />
       <img v-if="photo && props.displayCaptured" :src="photo" width="100%" />
       <canvas ref="canvasRef" style="display: none;"></canvas>
     </div>
 
-    <q-space v-if="$q.screen.lt.md" />
+    <!-- <q-space /> -->
 
     <div class="column gap-1">
       <div class="grid grid-cols-2 gap-1">
@@ -16,12 +16,13 @@
           outlined
           label="Camera"
           v-model="camera"
-          :options="cameras"
           option-label="label"
           option-value="value"
           emit-value
           map-options
+          :options="cameras"
           :class="$q.screen.lt.md ? 'flex-grow' : ''"
+          @update:model-value="onCameraChanged"
         />
       </div>
 
@@ -113,8 +114,11 @@ const getCameras = async () => {
     value: device.deviceId
   }));
 
+  const lastCameraUsed = localStorage.getItem('lastCameraUsed');
+
   if (!camera.value && cameras.value.length > 0 && cameras.value[0]) {
-    camera.value = cameras.value[0].value;
+    if (lastCameraUsed) camera.value = lastCameraUsed;
+    else camera.value = cameras.value[0].value;
   }
 };
 
@@ -172,6 +176,10 @@ const handleClose = () => {
   stopCamera();
 
   emit('close');
+}
+
+const onCameraChanged = (val: string) => {
+  localStorage.setItem('lastCameraUsed', val);
 }
 
 onMounted(async () => {
